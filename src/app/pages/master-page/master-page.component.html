@@ -1,0 +1,36 @@
+<nav class="uk-navbar-container"
+     uk-navbar>
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active">
+                <a uk-toggle="target: #sideMenu"
+                   uk-icon="menu">
+                </a>
+            </li>
+
+            <li *ngFor="let pagina of paginas">
+                <a (click)="abrir(pagina)">{{ pagina.nome }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+            <li><a (click)="logout()">LOGOUT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="sideMenu"
+     uk-offcanvas>
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close"
+                type="button"
+                uk-close></button>
+
+    </div>
+</div>
+<div class="uk-padding">
+    <router-outlet></router-outlet>
+</div>

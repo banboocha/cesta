@@ -1,0 +1,33 @@
+<app-loading [data]="productService?.productList"></app-loading>
+
+<table *ngIf="productService?.productList?.length > 0"
+       class="uk-table uk-table-stripped uk-table-hover uk-trable divider">
+    <thead>
+        <tr>
+            <th class="uk-text-center">#</th>
+            <th class="uk-text-center">Título</th>
+            <th class="uk-text-center">Preço</th>
+            <th class="uk-text-center">Descrição</th>
+            <th class="uk-text-center">Quantidade</th>
+            <th class="uk-text-center">Categoria</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of productService?.productList"
+            [ngClass]="{ 'selectedProduct': product?.id == item.id}">
+            <td class="uk-text-center">{{ item.codigo }}</td>
+            <td class="uk-text-center">{{ item.titulo }}</td>
+            <td class="uk-text-center">{{ item.preco }}</td>
+            <td class="uk-text-center">{{ item.descricao }}</td>
+            <td class="uk-text-center">{{ item.quantidade }}</td>
+            <td class="uk-text-center">{{ getCategoryDescription(item.categoria) }}</td>
+            <!-- <td class="uk-text-center">{{ item.categoria }}</td> -->
+            <td class="uk-text-center">
+                <button type="button"
+                        class="uk-button uk-button-default"
+                        (click)="selectedProduct(item);">SELECIONAR</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

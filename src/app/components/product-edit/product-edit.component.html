@@ -1,0 +1,90 @@
+<div class="uk-flex-center"
+     uk-grid>
+    <div class="uk-width-1-2@m">
+        <div class="uk-card uk-card-default uk-card-body">
+            <form [formGroup]="form"
+                  novalidate>
+                <h3 class="uk-card-title">Gestão de Produtos</h3>
+                <div class="uk-margin">
+                    <input type="text"
+                           class="uk-input uk-form-large"
+                           placeholder="Código"
+                           formControlName="codigo"
+                           [ngClass]="{ 'uk-form-danger': (f.codigo.invalid && !f.codigo.pristine) }"
+                           required
+                           maxlength="6">
+                    <span class="uk-text-danger"
+                          *ngIf="(f.codigo.invalid && !f.codigo.pristine)">Código inválido</span>
+                </div>
+                <div class="uk-margin">
+                    <input type="text"
+                           class="uk-input uk-form-large"
+                           placeholder="Titulo"
+                           formControlName="titulo"
+                           [ngClass]="{ 'uk-form-danger': (f.titulo.invalid && !f.titulo.pristine) }"
+                           required>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.titulo.invalid && !f.titulo.pristine)">Titulo inválido</span>
+                </div>
+                <div class="uk-margin">
+                    <input type="text"
+                           class="uk-input uk-form-large"
+                           placeholder="Preço"
+                           formControlName="preco"
+                           [ngClass]="{ 'uk-form-danger': (f.preco.invalid && !f.preco.pristine) }"
+                           required>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.preco.invalid && !f.preco.pristine)">Preço inválido</span>
+                </div>
+                <div class="uk-margin">
+                    <input type="text"
+                           class="uk-input uk-form-large"
+                           placeholder="Descrição"
+                           formControlName="descricao"
+                           [ngClass]="{ 'uk-form-danger': (f.descricao.invalid && !f.descricao.pristine) }"
+                           required>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.descricao.invalid && !f.descricao.pristine)">Descrição inválida</span>
+                </div>
+                <div class="uk-margin">
+                    <input type="text"
+                           class="uk-input uk-form-large"
+                           placeholder="Quantidade"
+                           formControlName="quantidade"
+                           [ngClass]="{ 'uk-form-danger': (f.quantidade.invalid && !f.quantidade.pristine) }"
+                           required>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.quantidade.invalid && !f.quantidade.pristine)">Quantidade inválida</span>
+                </div>
+                <div class="uk-margin">
+                    <select class="uk-input uk-form-large"
+                            formControlName="categoria"
+                            required
+                            [ngStyle]="{color: f.categoria.value == '' ? 'gray' : '#666'}">
+                        <option selected
+                                disabled
+                                value="0">Categoria</option>
+                        <option *ngFor="let cat of categories"
+                                value="{{ cat.codigo }}">
+                            {{ cat.descricao }}
+                        </option>
+                    </select>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.categoria.invalid && !f.categoria.pristine)">Categoria inválida</span>
+                </div>
+            </form>
+            <div class="uk-margin uk-text-right">
+                <button class="uk-button uk-button-primary uk-margin-small-right"
+                        (click)="novo();">NOVO</button>
+                <button class="uk-button uk-button-success uk-margin-small-right"
+                        (click)="create();">SALVAR</button>
+                <button class="uk-button uk-button-primary uk-margin-small-right"
+                        [disabled]="form.invalid"
+                        (click)="update();">EDITAR</button>
+                <button class="uk-button uk-button-danger"
+                        [disabled]="form.invalid"
+                        (click)="delete();">EXCLUIR</button>
+            </div>
+        </div>
+    </div>
+</div>

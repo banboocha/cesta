@@ -1,0 +1,106 @@
+<br><br>
+<div class="uk-flex-center"
+     uk-grid>
+    <div class="uk-width-1-2@m">
+        <div class="uk-card uk-card-default uk-card-body">
+
+            <form [formGroup]="form"
+                  novalidate>
+                <h3 class="uk-card-title">Cadastre-se</h3>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-12">
+                        <span class="uk-form-icon"
+                              uk-icon="icon: user"></span>
+                        <input type="text"
+                               class="uk-input uk-form-large"
+                               placeholder="Nome"
+                               formControlName="name"
+                               [ngClass]="{ 'uk-form-danger': (f.name.invalid && !f.name.pristine) }"
+                               required>
+                    </div>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.name.invalid && !f.name.pristine)">Nome inválido</span>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-12">
+                        <span class="uk-form-icon"
+                              uk-icon="icon: mail"></span>
+                        <input type="email"
+                               class="uk-input uk-form-large"
+                               placeholder="E-mail"
+                               formControlName="email"
+                               [ngClass]="{ 'uk-form-danger': (f.email.invalid && !f.email.pristine) }"
+                               required>
+                    </div>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.email.invalid && !f.email.pristine)">E-mail inválido</span>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-12">
+                        <span class="uk-form-icon"
+                              uk-icon="icon: user"></span>
+                        <input type="text"
+                               class="uk-input uk-form-large"
+                               placeholder="Usuário"
+                               formControlName="user"
+                               [ngClass]="{ 'uk-form-danger': (f.user.invalid && !f.user.pristine) }"
+                               required>
+                    </div>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.user.invalid && !f.user.pristine)">Usuário inválido</span>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-12">
+                        <button type="button"
+                                class="uk-form-icon uk-form-icon-flip"
+                                uk-icon="icon: question"
+                                (click)="showPassword = !showPassword;"
+                                tabindex="-1"></button>
+                        <span class="uk-form-icon"
+                              uk-icon="icon: lock"></span>
+                        <input [type]="showPassword ? 'text' : 'password'"
+                               class="uk-input uk-form-large"
+                               placeholder="Senha"
+                               formControlName="password"
+                               [ngClass]="{ 'uk-form-danger': (f.password.invalid && !f.password.pristine) }"
+                               required>
+                    </div>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.password.invalid && !f.password.pristine)">Senha inválida</span>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-12">
+                        <button type="button"
+                                class="uk-form-icon uk-form-icon-flip"
+                                uk-icon="icon: question"
+                                (click)="showConfirmPassword = !showConfirmPassword"
+                                tabindex="-1"></button>
+                        <span class="uk-form-icon"
+                              uk-icon="icon: lock"></span>
+                        <input [type]="showConfirmPassword ? 'text' : 'password'"
+                               class="uk-input uk-form-large"
+                               placeholder="Confirme a senha"
+                               formControlName="confirmPassword"
+                               [ngClass]="{ 'uk-form-danger': (f.confirmPassword.invalid && !f.confirmPassword.pristine) }"
+                               required>
+                    </div>
+                    <span class="uk-text-danger"
+                          *ngIf="(f.confirmPassword.invalid && !f.confirmPassword.pristine)">Confirmação de senha inválida</span>
+                </div>
+            </form>
+            <div class="uk-text-right">
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-default"
+                            [disabled]="form.invalid"
+                            (click)="signup();">SALVAR</button>
+                </div>
+                <div class="uk-margin">
+                    <a (click)="logar();">Já sou registrado</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
